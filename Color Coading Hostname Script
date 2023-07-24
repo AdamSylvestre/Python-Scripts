@@ -28,11 +28,11 @@ total_rows = sheet.max_row
 for row_number in range(3, total_rows + 1):
     # Check if the row has enough values before accessing them
     if all(columns.values()):
-        //Path Name 1// = sheet[columns['Tenable'] + str(row_number)].value
-        //Path Name 2// = sheet[columns['Windows Defender'] + str(row_number)].value
-        //Path Name 3// = sheet[columns['KACE'] + str(row_number)].value
-        //Path Name 4// = sheet[columns['JAMF'] + str(row_number)].value
-        //Path Name 5// = sheet[columns['Intune'] + str(row_number)].value
+        //Path Name 1// = sheet[columns['//Path Name 1//'] + str(row_number)].value
+        //Path Name 2// = sheet[columns['//Path Name 2//'] + str(row_number)].value
+        //Path Name 3// = sheet[columns['//Path Name 3//'] + str(row_number)].value
+        //Path Name 4// = sheet[columns['//Path Name 4//'] + str(row_number)].value
+        //Path Name 5// = sheet[columns['//Path Name 5//'] + str(row_number)].value
     else:
         continue  # Skip the row if it doesn't have enough values
 
