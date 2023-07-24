@@ -1,0 +1,50 @@
+# This script helped me color code the master hostname file to get a better idea of the situation we were in visually. I made multiple versions of this script for diffrent colors and then applied them to the master file
+
+import openpyxl
+from openpyxl.styles import PatternFill
+
+# Load the Excel file
+wb = openpyxl.load_workbook('color_coded_file.xlsx')
+sheet = wb.active
+
+# Define color codes
+colors = {
+    'Red': PatternFill(start_color='d82429', end_color='d82429', fill_type='solid'),
+}
+
+# Get the column indexes
+columns = {
+    '//Path Name 1//': 'B',
+    '//Path Name 2//': 'C',
+    '//Path Name 3//': 'D',
+    '//Path Name 4//': 'E',
+    '//Path Name 5//': 'F',
+}
+
+# Get the total number of rows in the sheet
+total_rows = sheet.max_row
+
+# Iterate through each row
+for row_number in range(3, total_rows + 1):
+    # Check if the row has enough values before accessing them
+    if all(columns.values()):
+        //Path Name 1// = sheet[columns['Tenable'] + str(row_number)].value
+        //Path Name 2// = sheet[columns['Windows Defender'] + str(row_number)].value
+        //Path Name 3// = sheet[columns['KACE'] + str(row_number)].value
+        //Path Name 4// = sheet[columns['JAMF'] + str(row_number)].value
+        //Path Name 5// = sheet[columns['Intune'] + str(row_number)].value
+    else:
+        continue  # Skip the row if it doesn't have enough values
+
+    color = None  # Initialize the color variable
+
+    if (//Path Name 1// == 'Yes' or //Path Name 2// == 'Yes' or //Path Name 3// == 'Yes') and (//Path Name 4// == no and //Path Name 5// == no):
+        color = colors['red']   
+    # Apply the color to the cells in the row up to the last column (column 6)
+    if color:
+        for column in range(1, 7):
+            cell = sheet.cell(row=row_number, column=column)
+            cell.fill = color
+
+# Save the modified Excel file
+wb.save('color_coded_file_part_4.xlsx')
