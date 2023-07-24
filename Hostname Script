@@ -1,0 +1,41 @@
+# I made this script due to having one excel file with all hostnames, and others from certain services which only had some of the hostnames. I used this to help make a master list that listed which hostnames were in what program.
+
+import pandas as pd
+from tqdm import tqdm
+
+# Load hostnames from the master Excel file
+master_df = pd.read_excel(r'//path//')
+hostnames = master_df['All Hostnames'].tolist()
+
+# Load the //path name// DataFrame
+//path name//_df = pd.read_excel(r'//path//')
+
+# Retrieve the hostnames from the //path// DataFrame
+//path name//_hostnames = //path name//_df.iloc[:, 0].tolist()
+
+# Function to check if a hostname exists in the //path// hostnames list
+def check_hostname(hostname, hostnames_list):
+    return 'Yes' if hostname in hostnames_list else 'No'
+
+# Update the master Excel file with the results
+updated_master_df = master_df.copy()
+
+# Calculate the total number of hostnames to process
+total_hostnames = len(hostnames)
+
+# Initialize the progress bar
+pbar = tqdm(total=total_hostnames)
+
+# Process each hostname
+for hostname in hostnames:
+    # Process the '//path name//' column
+    updated_master_df.loc[updated_master_df['All Hostnames'] == hostname, '//path name//'] = check_hostname(hostname, //path name//_hostnames)
+    
+    # Update the progress bar
+    pbar.update(1)
+
+# Close the progress bar
+pbar.close()
+
+# Save the updated master Excel file
+updated_master_df.to_excel('updated_master_//path name//.xlsx', index=False)
